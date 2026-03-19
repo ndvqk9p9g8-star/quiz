@@ -5,116 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>とーさん検定2026</title>
     <style>
-        /* 全体：落ち着いた薄い水色の背景 */
+        /* --- ベーススタイル --- */
         body { 
-            background: #e0f2f1;
             margin: 0;
+            padding: 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #37474f; 
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif; 
-            padding: 20px;
-            box-sizing: border-box;
-            position: relative;
+            color: #37474f;
+            
+            /* --- 【修正点】画像不要！CSSだけで作る水色チェック柄背景 --- */
+            background-color: #e0f2f1; /* ベースの水色 */
+            background-image: 
+                linear-gradient(white 2px, transparent 2px),
+                linear-gradient(90deg, white 2px, transparent 2px);
+            background-size: 50px 50px; /* チェックの大きさ */
+            background-position: -1px -1px;
         }
 
-        /* いらすとやさんのイラストを背景に配置（image_0.png:お父さん） */
-        body::before {
-            content: "";
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 150px; /* サイズは適宜調整 */
-            height: 150px;
-            background-image: url('image_0.png'); /* 画像ファイルを配置する */
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.8; /* 少し薄くする */
-            z-index: -1;
-        }
-
-        /* クイズカード：シンプルで高級感のある白 */
+        /* --- クイズカード --- */
         .card { 
-            background: #ffffff;
-            padding: 40px 25px; 
-            max-width: 440px; 
-            width: 90%;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.05); 
-            border-radius: 8px; /* あえて少し角を残してカチッと */
+            background: rgba(255, 255, 255, 0.95); /* 少し透ける白 */
+            padding: 40px 20px; 
+            width: 90%; /* スマホ基準の横幅 */
+            max-width: 450px; /* パソコンでの最大横幅 */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+            border-radius: 15px;
             text-align: center;
-            border-top: 6px solid #81d4fa; /* 上部にアクセントカラー */
-            position: relative;
+            box-sizing: border-box; /* パディングを含めたサイズ計算 */
+            border: 2px solid #81d4fa; /* 優しい水色の枠線 */
         }
 
-        /* いらすとやさんのイラストをカード内に配置（image_1.png:クイズお姉さん） */
-        .card::after {
-            content: "";
-            position: absolute;
-            top: -50px; /* カードの上からはみ出させる */
-            left: -40px;
-            width: 100px;
-            height: 100px;
-            background-image: url('image_1.png'); /* 画像ファイルを配置する */
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: 10;
-        }
-
+        /* タイトル */
         h1 { 
-            font-size: 1.5rem; 
-            margin-bottom: 25px; 
+            font-size: 1.6rem; 
+            margin-top: 0;
+            margin-bottom: 20px; 
             color: #0288d1;
-            letter-spacing: 0.1em;
-            position: relative;
-            z-index: 2; /* イラストの上に表示 */
         }
 
+        /* 問題文 */
         #q-text {
             font-size: 1.1rem;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             line-height: 1.6;
-            position: relative;
-            z-index: 2;
         }
 
-        /* ボタン：お父さんらしい落ち着いたブルー */
+        /* --- 【修正点】スマートフォン対応のボタン --- */
         .btn { 
             display: block; 
             width: 100%; 
-            padding: 16px; 
+            padding: 18px; /* タップしやすいよう高さを確保 */
             margin: 15px 0; 
             border: 1px solid #b3e5fc; 
             background-color: #fff;
             color: #0288d1; 
             cursor: pointer; 
-            font-size: 1rem; 
+            font-size: 1.1rem; /* 文字を少し大きく */
             font-weight: bold; 
-            border-radius: 4px;
+            border-radius: 30px; /* 丸いボタン */
             transition: all 0.3s;
-            position: relative;
-            z-index: 2;
+            box-sizing: border-box;
+            
+            /* スマホでのタップ時のハイライトを防止 */
+            -webkit-tap-highlight-color: transparent; 
         }
 
-        .btn:hover { 
-            background-color: #e1f5fe; 
-            border-color: #0288d1;
+        /* パソコンでのホバー効果 */
+        @media (hover: hover) {
+            .btn:hover { 
+                background-color: #e1f5fe; 
+                border-color: #0288d1;
+                transform: translateY(-1px);
+            }
         }
 
-        /* ツッコミ：目立ちすぎない優しい赤 */
+        /* --- ツッコミ（間違えた時） --- */
         .tsukkomi { 
             color: #d32f2f;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: bold; 
             margin-top: 25px; 
             padding: 15px; 
             background-color: #fff5f5; 
-            border-radius: 4px;
+            border-radius: 10px;
             border: 1px solid #ffcdd2;
         }
 
-        /* プレゼントボタン：少し華やかに */
+        /* --- 結果画面のプレゼントボタン --- */
         .gift-btn { 
             background-color: #0288d1;
             color: #fff; 
@@ -123,8 +103,17 @@
             display: inline-block; 
             margin-top: 25px; 
             font-weight: bold; 
-            border-radius: 4px;
-            font-size: 1.1rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(2,136,209,0.3);
+            transition: 0.3s;
+        }
+
+        @media (hover: hover) {
+            .gift-btn:hover {
+                background-color: #01579b;
+                transform: translateY(-2px);
+            }
         }
 
         .hidden { display: none; }
@@ -135,20 +124,24 @@
     <div id="quiz-container" class="card">
         <h1 id="q-title">とーさん検定 2026</h1>
         <p id="q-text">私のこと、どれくらい分かってるかな！</p>
+        
         <div id="options">
             <button class="btn" onclick="startQuiz()">検定を開始する</button>
         </div>
+        
         <p id="feedback" class="hidden"></p>
     </div>
 
     <div id="result-container" class="card hidden">
         <p style="font-size: 1.1rem; line-height: 1.8; color: #333;">お疲れ様です！<br>どれくらい当たった？笑<br>解いたら連絡ちょうだい！！</p>
         <hr style="border:0; border-top:1px solid #eee; margin:30px 0;">
-        <p style="color: #666;">これ参加賞プレゼントだよ</p>
+        <p style="color: #666; font-size: 1rem;">これ参加賞プレゼントだよ</p>
+        
         <a class="gift-btn" href="ここにギフトURLを貼る" target="_blank">🎁 プレゼントを受け取る</a>
     </div>
 
     <script>
+        // --- クイズデータ（あなたの要望通り） ---
         const questions = [
             { q: "第1問：私が今、難しくて嘆いている講義は？", a: ["マクロ経済学", "ドイツ語", "西洋史"], correct: 1, fail: "ドイツ語の単位を取ろうと必死なんですけど！！" },
             { q: "第2問：最近の私のリフレッシュ方法は？", a: ["週一でサウナ（整ってます）", "ひたすら寝る", "散歩"], correct: 0, fail: "週一で整ってます！私のスケジュール把握しといてね。" },
@@ -158,36 +151,57 @@
         ];
 
         let currentIdx = 0;
-        function startQuiz() { currentIdx = 0; showQuestion(); }
+
+        // クイズ開始
+        function startQuiz() {
+            currentIdx = 0;
+            showQuestion();
+        }
+
+        // 問題を表示する関数
         function showQuestion() {
             const q = questions[currentIdx];
+            // タイトルと問題文を更新
             document.getElementById('q-title').innerText = `第 ${currentIdx + 1} 問`;
             document.getElementById('q-text').innerText = q.q;
+            
+            // 選択肢ボタンを生成
             const optDiv = document.getElementById('options');
-            optDiv.innerHTML = "";
+            optDiv.innerHTML = ""; // 一旦クリア
             q.a.forEach((txt, i) => {
                 const btn = document.createElement('button');
                 btn.className = "btn";
                 btn.innerText = txt;
-                btn.onclick = () => checkAnswer(i);
+                btn.onclick = () => checkAnswer(i); // クリック時に正誤判定
                 optDiv.appendChild(btn);
             });
+            
+            // ツッコミを隠す
             document.getElementById('feedback').classList.add('hidden');
         }
 
+        // 正誤判定する関数
         function checkAnswer(idx) {
             const feedback = document.getElementById('feedback');
+            
             if (idx === questions[currentIdx].correct) {
+                // 正解の場合：次の問題へ
                 currentIdx++;
-                if (currentIdx < questions.length) { showQuestion(); } 
-                else { showResult(); }
+                if (currentIdx < questions.length) {
+                    showQuestion();
+                } else {
+                    // 全問正解：結果画面へ
+                    showResult();
+                }
             } else {
+                // 不正解の場合：ツッコミを表示（次の問題には進めない）
                 feedback.innerText = questions[currentIdx].fail;
                 feedback.classList.remove('hidden');
-                feedback.className = "tsukkomi";
+                feedback.className = "tsukkomi"; // スタイル適用
             }
         }
 
+        // 結果画面を表示する関数
         function showResult() {
             document.getElementById('quiz-container').classList.add('hidden');
             document.getElementById('result-container').classList.remove('hidden');
