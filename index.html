@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>とーさん検定2024</title>
+    <style>
+        body { background-color: #f9f9f9; color: #333; font-family: sans-serif; text-align: center; padding: 20px; }
+        .card { background: white; border: 4px solid #333; padding: 20px; max-width: 400px; margin: auto; box-shadow: 10px 10px 0px #ccc; }
+        .btn { display: block; width: 100%; padding: 10px; margin: 10px 0; border: 2px solid #333; background: #fff; cursor: pointer; font-weight: bold; }
+        .btn:hover { background: #eee; }
+        .hidden { display: none; }
+        .tsukkomi { color: red; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="quiz-container" class="card">
+        <h1 id="q-title">とーさん検定</h1>
+        <p id="q-text">私のこと、どれくらい分かってる？<br>全問正解でアイスあげる。</p>
+        <div id="options">
+            <button class="btn" onclick="startQuiz()">挑戦をはじめる（豆腐メンタル禁止）</button>
+        </div>
+        <p id="feedback" class="tsukkomi"></p>
+    </div>
+
+    <div id="result-container" class="card hidden">
+        <h1>全問正解！</h1>
+        <p>ちっ、意外と覚えてるんだな…。</p>
+        <p>はい、これ。父の日のプレゼント。</p>
+        <a id="gift-link" href="https://www.starbucks.co.jp/gift/" target="_blank">🎁 ギフトを受け取る</a>
+        <p style="margin-top:20px; font-size: 0.8em;">※たまには連絡しろよー</p>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "私が大学で一番『これ無理』って言ってる講義は？", a: ["経済学", "ドイツ語", "体育"], correct: 1, fail: "は？ドイツ語の単位、必死で取ってるの知らんの？" },
+            { q: "最近の私のマイブームは？", a: ["サウナ", "自炊（豆腐料理）", "推し活"], correct: 0, fail: "サウナだよ！整ってるんだよこっちは！" },
+            { q: "私の今のバイト先、何系？", a: ["カフェ", "塾講師", "実はやってない"], correct: 2, fail: "やってないわ！ニート満喫中だよ！" },
+            { q: "私が一番「お父さんに似てきたな」と思うところは？", a: ["くしゃみのうるささ", "頑固な性格", "お酒の弱さ"], correct: 0, fail: "あの爆音くしゃみ、完全に遺伝したからな！責任取れ！" },
+            { q: "最後。今日の夕飯、私が食べたいのは？", a: ["豆腐", "焼肉", "お父さんの奢りなら何でも"], correct: 2, fail: "そこは『お父さんの奢り』一択だろ！空気読め！" }
+        ];
+
+        let currentIdx = 0;
+
+        function startQuiz() {
+            currentIdx = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = questions[currentIdx];
+            document.getElementById('q-title').innerText = `第 ${currentIdx + 1} 問`;
+            document.getElementById('q-text').innerText = q.q;
+            const optDiv = document.getElementById('options');
+            optDiv.innerHTML = "";
+            q.a.forEach((txt, i) => {
+                const btn = document.createElement('button');
+                btn.className = "btn";
+                btn.innerText = txt;
+                btn.onclick = () => checkAnswer(i);
+                optDiv.appendChild(btn);
+            });
+            document.getElementById('feedback').innerText = "";
+        }
+
+        function checkAnswer(idx) {
+            if (idx === questions[currentIdx].correct) {
+                currentIdx++;
+                if (currentIdx < questions.length) {
+                    showQuestion();
+                } else {
+                    showResult();
+                }
+            } else {
+                document.getElementById('feedback').innerText = questions[currentIdx].fail;
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('result-container').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
