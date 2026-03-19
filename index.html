@@ -7,39 +7,76 @@
     <style>
         /* 全体：落ち着いた薄い水色の背景 */
         body { 
-            background: #f0f7f9;
+            background: #e0f2f1;
             margin: 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #455a64; 
+            color: #37474f; 
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif; 
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* いらすとやさんのイラストを背景に配置（image_0.png:お父さん） */
+        body::before {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 150px; /* サイズは適宜調整 */
+            height: 150px;
+            background-image: url('image_0.png'); /* 画像ファイルを配置する */
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8; /* 少し薄くする */
+            z-index: -1;
         }
 
         /* クイズカード：シンプルで高級感のある白 */
         .card { 
             background: #ffffff;
-            padding: 50px 30px; 
+            padding: 40px 25px; 
             max-width: 440px; 
-            width: 85%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+            width: 90%;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.05); 
             border-radius: 8px; /* あえて少し角を残してカチッと */
             text-align: center;
             border-top: 6px solid #81d4fa; /* 上部にアクセントカラー */
+            position: relative;
+        }
+
+        /* いらすとやさんのイラストをカード内に配置（image_1.png:クイズお姉さん） */
+        .card::after {
+            content: "";
+            position: absolute;
+            top: -50px; /* カードの上からはみ出させる */
+            left: -40px;
+            width: 100px;
+            height: 100px;
+            background-image: url('image_1.png'); /* 画像ファイルを配置する */
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 10;
         }
 
         h1 { 
-            font-size: 1.4rem; 
-            margin-bottom: 30px; 
+            font-size: 1.5rem; 
+            margin-bottom: 25px; 
             color: #0288d1;
             letter-spacing: 0.1em;
+            position: relative;
+            z-index: 2; /* イラストの上に表示 */
         }
 
         #q-text {
             font-size: 1.1rem;
             margin-bottom: 35px;
             line-height: 1.6;
+            position: relative;
+            z-index: 2;
         }
 
         /* ボタン：お父さんらしい落ち着いたブルー */
@@ -56,6 +93,8 @@
             font-weight: bold; 
             border-radius: 4px;
             transition: all 0.3s;
+            position: relative;
+            z-index: 2;
         }
 
         .btn:hover { 
@@ -72,6 +111,7 @@
             padding: 15px; 
             background-color: #fff5f5; 
             border-radius: 4px;
+            border: 1px solid #ffcdd2;
         }
 
         /* プレゼントボタン：少し華やかに */
