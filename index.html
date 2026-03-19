@@ -3,42 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>とーさん検定2024</title>
+    <title>とーさん検定2026</title>
     <style>
-        body { background-color: #f9f9f9; color: #333; font-family: sans-serif; text-align: center; padding: 20px; }
-        .card { background: white; border: 4px solid #333; padding: 20px; max-width: 400px; margin: auto; box-shadow: 10px 10px 0px #ccc; }
-        .btn { display: block; width: 100%; padding: 10px; margin: 10px 0; border: 2px solid #333; background: #fff; cursor: pointer; font-weight: bold; }
-        .btn:hover { background: #eee; }
+        body { 
+            background-color: #e0f2f1; /* 薄い水色 */
+            background-image: 
+                /* お父さんと私のシルエット（優しいイラスト） */
+                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSIjYmRkZWUzIiBmaWxsLW9wYWNpdHk9IjAuNCI+PHBhdGggZD0iTTMwIDIwYzEuMSAwIDIgLjkgMiAycz-.9IDItMiAyLTIgLS45LTItMnMtLjktMi0yLTJ6bTggOGMxLjEgMCAyIC45IDIgMnMtLjkgMi0yIDItMiAtLj5LTItMnMtLjktMi0yLTJ6bS0xNiA4YzEuMSAwIDIgLjkgMiAycz-.9IDItMiAyLTIgLS45LTItMnMtLjktMi0yLTJ6bTggOGMxLjEgMCAyIC45IDIgMnMtLjkgMi0yIDItMiAtLj5LTItMnMtLjktMi0yLTJ6TTIwIDMwYy01LjUgMC0xMCA0LjUtMTAgMTBzNC41IDEwIDEwIDEwIDEwLTQuNSAxMC0xMC00LjUtMTAtMTAtMTB6bTAgMThjLTQuNCAwLTgtMy42LTgtOHMzLjYtOCA4LTggOCAzLjYgOCA4LTMuNiA4LTggOHpNMzggNDBjLTUuNSAwLTEwIDQuNS0xMCAxMHM0LjUgMTAgMTAgMTAgMTAtNC41IDEwLTEwLTQuNS0xMC0xMC0xMHptMCAxOGMtNC40IDAgLTgtMy42LTgtOHMzLjYtOCA4LTggOCAzLjYgOCA4LTMuNiA4LTggOHpNMjAgMjBjNC40IDAgOC0zLjYgOC04cy0zLjYtOC04LTgtOCAzLjYtOCA4IDMuNiA4IDggOHptMC0xNGMyLjIgMCA0IDEuOCA0IDRzLTEuOCA0LTQgNC00LTEuOC00LTQtMS44LTQtNC00ek0zOCAyMGM0LjQgMCA4LTMuNiA4LThzLTMuNi04LTgtOC04IDMuNi04IDggMy42IDggOCA4em0wLTE0YzIuMiAwIDQgMS44IDQgNHstMS44IDQtNCA0LTQtMS44LTQtNC0xLjguNC00LTR6Ii8+PC9nPjwvc3ZnPg=='),
+                /* ネクタイや眼鏡などの小物のイラスト */
+                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZD0iTTUwIDEwbDEwIDIwaC0yMHpNMzAgMjBoNDB2NDBIMzB6TTUwIDcwYzUgMCAxMCA0IDEwIDEwcy01IDEwLTEwIDEwLTEwLTQtMTAtMTB6TTgwIDEwaDEwdjgwSDgwek0xMCAxMGgxMHY4MEgxMHpNMzUgODBIMTY1di00MEgzNXpNMjAgNzBoMTB2MTBIMjB6TTcwIDcwaDEwdjEwSDcwek0zNSAyMGg2NXY0MEgzNXoiIGZpbGw9IiNhYmNlZTIiIGZpbGwtb3BhY2l0eT0iMC4zIi8+PC9zdmc+');
+            color: #37474f; 
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+        }
+        .card { 
+            background: rgba(255, 255, 255, 0.9); /* 少し透明な白 */
+            border: none; 
+            padding: 40px 30px; 
+            max-width: 480px; 
+            margin: 50px auto; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-radius: 15px; /* 角を丸く */
+        }
+        h1 { 
+            font-size: 1.7rem; 
+            margin-bottom: 25px; 
+            color: #26a69a; /* 優しい緑系 */
+            font-weight: bold;
+        }
+        .btn { 
+            display: block; 
+            width: 100%; 
+            padding: 18px; 
+            margin: 15px 0; 
+            border: none; 
+            background-color: #80cbc4; /* 優しい水色系 */
+            color: #fff; 
+            cursor: pointer; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            border-radius: 30px; /* ボタンも丸く */
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .btn:hover { 
+            background-color: #4db6ac; 
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
         .hidden { display: none; }
-        .tsukkomi { color: red; font-weight: bold; margin-top: 10px; }
+        .tsukkomi { 
+            color: #e57373; /* 優しい赤 */
+            font-weight: bold; 
+            margin-top: 25px; 
+            padding: 15px; 
+            border: 2px solid #e57373; 
+            border-radius: 10px;
+            background-color: #fff5f5; 
+            line-height: 1.6; 
+        }
+        .gift-btn { 
+            background-color: #ffb74d; /* 優しいオレンジ */
+            color: #fff; 
+            text-decoration: none; 
+            padding: 18px; 
+            display: inline-block; 
+            width: 85%; 
+            margin-top: 25px; 
+            border: none; 
+            font-weight: bold; 
+            border-radius: 30px;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(255,183,77,0.4);
+        }
+        .gift-btn:hover {
+            background-color: #ffa726;
+        }
     </style>
 </head>
 <body>
 
     <div id="quiz-container" class="card">
-        <h1 id="q-title">とーさん検定</h1>
-        <p id="q-text">私のこと、どれくらい分かってる？<br>全問正解でアイスあげる。</p>
+        <h1 id="q-title">とーさん検定 2026</h1>
+        <p id="q-text" style="font-size: 1.1rem; margin-bottom: 30px;">私のこと、どれくらい分かってるかな！</p>
         <div id="options">
-            <button class="btn" onclick="startQuiz()">挑戦をはじめる（豆腐メンタル禁止）</button>
+            <button class="btn" onclick="startQuiz()">検定を開始する</button>
         </div>
-        <p id="feedback" class="tsukkomi"></p>
+        <p id="feedback" class="hidden"></p>
     </div>
 
     <div id="result-container" class="card hidden">
-        <h1>全問正解！</h1>
-        <p>ちっ、意外と覚えてるんだな…。</p>
-        <p>はい、これ。父の日のプレゼント。</p>
-        <a id="gift-link" href="https://www.starbucks.co.jp/gift/" target="_blank">🎁 ギフトを受け取る</a>
-        <p style="margin-top:20px; font-size: 0.8em;">※たまには連絡しろよー</p>
+        <p style="font-size: 1.2rem; line-height: 1.8;">お疲れ様です！<br>どれくらい当たった？笑<br>解いたら連絡ちょうだい！！</p>
+        <hr style="border: 0; border-top: 1px solid #ddd; margin: 30px 0;">
+        <p style="font-size: 1.1rem;">これ参加賞プレゼントだよ</p>
+        <a class="gift-btn" href="ここにハーゲンダッツのURLとかを貼る" target="_blank">🎁 プレゼントを受け取る</a>
     </div>
 
     <script>
         const questions = [
-            { q: "私が大学で一番『これ無理』って言ってる講義は？", a: ["経済学", "ドイツ語", "体育"], correct: 1, fail: "は？ドイツ語の単位、必死で取ってるの知らんの？" },
-            { q: "最近の私のマイブームは？", a: ["サウナ", "自炊（豆腐料理）", "推し活"], correct: 0, fail: "サウナだよ！整ってるんだよこっちは！" },
-            { q: "私の今のバイト先、何系？", a: ["カフェ", "塾講師", "実はやってない"], correct: 2, fail: "やってないわ！ニート満喫中だよ！" },
-            { q: "私が一番「お父さんに似てきたな」と思うところは？", a: ["くしゃみのうるささ", "頑固な性格", "お酒の弱さ"], correct: 0, fail: "あの爆音くしゃみ、完全に遺伝したからな！責任取れ！" },
-            { q: "最後。今日の夕飯、私が食べたいのは？", a: ["豆腐", "焼肉", "お父さんの奢りなら何でも"], correct: 2, fail: "そこは『お父さんの奢り』一択だろ！空気読め！" }
+            { 
+                q: "第1問：私が今、難しくて嘆いている講義は？", 
+                a: ["マクロ経済学", "ドイツ語", "西洋史"], 
+                correct: 1, 
+                fail: "ドイツ語の単位を取ろうと必死なんですけど！！" 
+            },
+            { 
+                q: "第2問：最近の私のリフレッシュ方法は？", 
+                a: ["週一でサウナ（整ってます）", "ひたすら寝る", "散歩"], 
+                correct: 0, 
+                fail: "週一で整ってます！私のスケジュール把握しといてね。" 
+            },
+            { 
+                q: "第3問：今の私の仕事（？）状況は？", 
+                a: ["カフェ店員", "家庭教師", "ニート満喫中"], 
+                correct: 2, 
+                fail: "ニート満喫中ですYO！" 
+            },
+            { 
+                q: "第4問：私が一番「お父さんに似てきたな」と思うのは？", 
+                a: ["くしゃみのうるささ", "寝相の悪さ", "食べ物の好み"], 
+                correct: 0, 
+                fail: "あの爆音くしゃみ！毎回驚かされるから笑" 
+            },
+            { 
+                q: "最後！今日の夕飯、私が食べたいのは？", 
+                a: ["美味しい豆腐", "焼肉", "お父さんの奢りなら何でも"], 
+                correct: 2, 
+                fail: "お父さんの奢り一択でしょ！" 
+            }
         ];
 
         let currentIdx = 0;
@@ -61,10 +154,12 @@
                 btn.onclick = () => checkAnswer(i);
                 optDiv.appendChild(btn);
             });
-            document.getElementById('feedback').innerText = "";
+            const feedback = document.getElementById('feedback');
+            feedback.classList.add('hidden');
         }
 
         function checkAnswer(idx) {
+            const feedback = document.getElementById('feedback');
             if (idx === questions[currentIdx].correct) {
                 currentIdx++;
                 if (currentIdx < questions.length) {
@@ -73,7 +168,9 @@
                     showResult();
                 }
             } else {
-                document.getElementById('feedback').innerText = questions[currentIdx].fail;
+                feedback.innerText = questions[currentIdx].fail;
+                feedback.classList.remove('hidden');
+                feedback.className = "tsukkomi";
             }
         }
 
